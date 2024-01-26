@@ -1,7 +1,13 @@
 import { create } from 'apisauce'
 
-// define the api
 export const api = create({
-  baseURL: '', // Replace it with your URL
-  headers: {} // Add your own headers
-})
+  baseURL: process.env.APP_URL, // Replace it with your URL
+});
+
+
+/**
+ * Authentication API 
+ */
+export const loginUser = (params) => api.post('/api/auth/login', params);
+export const signupUser = (params) => api.post('/api/auth/signup', params);
+export const forgetUserPassword = (params) => api.post('/api/verify-email', params)
